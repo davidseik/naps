@@ -60,12 +60,28 @@ $template['default']['template'] = 'template';
 $template['default']['regions'] = array(
    'header',
    'menu',
+   'error',
    'content',
    'footer',
 );
 $template['default']['parser'] = 'parser';
 $template['default']['parser_method'] = 'parse';
 $template['default']['parse_template'] = FALSE;
+
+/* ADMIN TEMPLATE */
+
+$template['admin_template']['template'] = 'admin_template';
+$template['admin_template']['regions'] = array(
+   'header',
+   'user_name',
+   'user_mail',
+   'module_name',
+   'content',
+   'footer',
+);
+$template['admin_template']['parser'] = 'parser';
+$template['admin_template']['parser_method'] = 'parse';
+$template['admin_template']['parse_template'] = FALSE;
 
 /* End of file template.php */
 /* Location: ./system/application/config/template.php */

@@ -39,6 +39,9 @@
 */
 
 $route['default_controller'] = "main/main";
+$route['dashboard'] = "dashboard/dashboard";
+$route['admin_user'] = "admin_user/admin_user";
+$route['session/destroy'] = "session/session/destroy_session";
 $route['404_override'] = '';
 
 

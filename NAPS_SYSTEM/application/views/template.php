@@ -14,7 +14,8 @@
     <link href="<?= base_url(); ?>css/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<?= base_url(); ?>css/main/main.css" rel="stylesheet">
+    <!-- <link href="<?= base_url(); ?>css/main/main.css" rel="stylesheet"> -->
+    <?= $_styles ?>
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -27,7 +28,10 @@
   </head>
 
   <body>
+    <div class="navbar-fixed-top">
       <?= $menu ?>
+      <?= $error ?>
+    </div>
     <div class="jumbotron">
       <div class="container">
         <?= $content ?>

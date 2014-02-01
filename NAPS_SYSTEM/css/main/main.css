@@ -4,6 +4,13 @@ body {
   padding-bottom: 20px;
 }
 
+.navbar{
+	margin-bottom: 0;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+}
+
 .jumbotron{
 	width:90%;
 	height:auto;
@@ -13,3 +20,22 @@ body {
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 }
+
+.btn-lg {
+	padding:20px 20%;
+	font-size: 3.5em;
+	min-width: 200px;
+}
+
+@media screen and (max-width: 768px){
+	.btn-lg {
+		font-size: 2.5em;
+	}
+}
+
+@media screen and (max-width: 500px){
+	.btn-lg {
+		font-size: 1.5em;
+	}
+}
+
