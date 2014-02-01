@@ -18,6 +18,7 @@
 
     <!-- SB Admin CSS - Include with every page -->
     <link href="<?= base_url(); ?>css/dashboard/sb-admin.css" rel="stylesheet">
+    <?= $_styles ?>
 
 </head>
 
@@ -121,14 +122,16 @@ jquery-1.11.0.min.js-->
     <script src="<?= base_url(); ?>js/plugins/metisMenu/jquery.metisMenu.js"></script>
 
     <!-- Page-Level Plugin Scripts - Dashboard -->
-    <script src="<?= base_url(); ?>js/plugins/morris/raphael-2.1.0.min.js"></script>
-    <script src="<?= base_url(); ?>js/plugins/morris/morris.js"></script>
+   <!-- <script src="<?= base_url(); ?>js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="<?= base_url(); ?>js/plugins/morris/morris.js"></script> -->
 
     <!-- SB Admin Scripts - Include with every page -->
     <script src="<?= base_url(); ?>js/dashboard/sb-admin.js"></script>
 
     <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
-    <script src="<?= base_url(); ?>js/demo/dashboard-demo.js"></script>
+   <!-- <script src="<?= base_url(); ?>js/demo/dashboard-demo.js"></script> -->
+
+     <?= $_scripts ?>
 
 </body>
 

@@ -53,7 +53,7 @@ class Main extends CI_Controller {
 		$data = array();
 		switch($err){
 			case '1':
-				$data['error'] = "You have your user or your password wrong!";
+				$data['error'] = "You have your mail or your password wrong!";
 			break;
 			default:
 				$data['error'] = "";

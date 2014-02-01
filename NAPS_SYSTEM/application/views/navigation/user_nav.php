@@ -15,7 +15,7 @@
       <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="#">Hello <?= $name.' '.$last_name; ?></a><li>
-            <li><a href="dashboard">Dashboard</a></li>
+            <li><a href="<?= base_url();?>index.php/dashboard">Dashboard</a></li>
             <li><a href="<?= base_url();?>index.php/session/destroy">Logout</a></li>
           </ul>
       </div>

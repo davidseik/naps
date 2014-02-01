@@ -9,13 +9,20 @@ class Admin_user extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->template->set_template('admin_template');
 		$this->check_ses->check_session();
 
 		$session_data = $this->session->all_userdata();
 		$data = $this->get_main_view_data($session_data); 
 
 		$user_data = $this->get_admin_user();
-		$this->template->set_template('admin_template');
+
+
+		$this->template->add_css('css/plugins/dataTables/dataTables.bootstrap.css');
+		$this->template->add_js('js/plugins/dataTables/jquery.dataTables.js');
+		$this->template->add_js('js/plugins/dataTables/dataTables.bootstrap.js');	
+		$this->template->add_js('js/admin_user/admin_user.js');
+
 		$this->template->write('user_name',$data['menu_data']['name'].' '.$data['menu_data']['last_name']);
 		$this->template->write('user_mail',$data['menu_data']['mail']);
 
