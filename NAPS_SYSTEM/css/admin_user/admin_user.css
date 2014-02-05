@@ -1,0 +1,21 @@
+tbody tr{
+	text-align: center;
+}
+
+.btn_tb {
+	margin-left:3%;
+	width:70px;
+}
+
+/*#add_edit_form{
+	width:50%;
+	min-width: 360px;
+	margin:0 auto 20px auto;
+}*/
+
+@media screen and (max-width: 1255px){
+	.btn_tb {
+	margin-top:5%;
+}
+
+}

@@ -19,6 +19,7 @@ class Admin_user extends CI_Controller {
 
 
 		$this->template->add_css('css/plugins/dataTables/dataTables.bootstrap.css');
+		$this->template->add_css('css/admin_user/admin_user.css');
 		$this->template->add_js('js/plugins/dataTables/jquery.dataTables.js');
 		$this->template->add_js('js/plugins/dataTables/dataTables.bootstrap.js');	
 		$this->template->add_js('js/admin_user/admin_user.js');
@@ -39,8 +40,13 @@ class Admin_user extends CI_Controller {
 
 	public function get_admin_user(){
 		return $this->admin_user_model->get_admin_user();
-		//var_dump($users);
 	}
+
+	public function get_user_data(){
+		echo json_encode($this->admin_user_model->get_user_data($_POST['id']));
+	}
+
+
 
 	public function get_main_view_data($session_data){
 		$result;

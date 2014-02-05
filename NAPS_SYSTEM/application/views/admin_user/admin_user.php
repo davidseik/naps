@@ -20,13 +20,11 @@
                                             <th>Mail</th>
                                             <th>Last Login</th>
                                             <th>Active</th>
-
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
-                                            $i=1;
                                             foreach($user_data as $row){
                                         ?>
                                             <tr class="even">
@@ -37,7 +35,7 @@
                                                 <td><?= $row['mail']?></td>
                                                 <td><?= $row['last_log']?></td>
                                                 <td><?= $row['active']?></td>
-                                                <td></td>
+                                                <td><button type="button" class="btn btn-sm btn-primary btn_tb clickable e_btn" id="edit_btn<?= $row['id_admin_user']?>"><i class="fa fa-edit fa-fw"></i>Edit</button><button type="button" class="btn btn-sm btn-primary btn_tb d_btn clickable" id="delete_btn<?= $row['id_admin_user']?>"><i class="fa fa-times-circle fa-fw"></i>Delete</button></td>
 <!--                                                 <td class="center">4</td>
                                                 <td class="center">X</td> -->
                                             </tr>
@@ -52,5 +50,96 @@
                         </div>
                         <!-- /.panel-body -->
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary" id="add_new_user"><i class="fa fa-users fa-fw"></i>Add new user</button>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default" id="add_edit_form" style="display:none; margin-top:20px">
+                        <div class="panel-heading" id="edit_heading">
+                
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+                                <form class="form-horizontal" id="data_form" role="form">
+                                <div class="form-group">
+                                    <label  class="col-sm-3 control-label">ID User</label>
+                                    <div class="col-sm-9">
+                                        <label  class="control-label" id="id_label"></label>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="name_in" class="col-sm-3 control-label">Name</label>
+                                    <div class="col-sm-9">
+                                      <input type="text" class="form-control" id="name_in" name="name" title="Example: David" placeholder="Name" maxlength="50" required>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="last_name_in" class="col-sm-3 control-label">Last Name</label>
+                                    <div class="col-sm-9">
+                                      <input type="Text" class="form-control" id="last_name_in" name="last_name" placeholder="Last Name" maxlength="50"  required>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="mail_in" class="col-sm-3 control-label">Mail</label>
+                                    <div class="col-sm-9">
+                                      <input type="Text" class="form-control" id="mail_in" name="mail" placeholder="mail@example.com" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="password_in" class="col-sm-3 control-label">Password</label>
+                                    <div class="col-sm-9">
+                                      <input type="password" class="form-control" name="pwd" id="pwd_in" placeholder="*********">
+                                    </div>
+                                  </div>
+                                   <div class="form-group">
+                                    <label for="category_in" class="col-sm-3 control-label">Category</label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control" id="category_in" name="category">
+                                          <option value="1">Administrator</option>
+                                          <option value="2">Moderator</option>
+                                        </select>
+                                    </div>
+                                  </div>
+                                   <div class="form-group">
+                                    <label for="active_in" class="col-sm-3 control-label">Active</label>
+                                    <div class="col-sm-9">
+                                      <select class="form-control" id="active_in" name="active">
+                                          <option value="1">Active</option>
+                                          <option value="0">Inactive</option>
+                                        </select>
+                                    </div>
+                                  </div>                                                                     
+ <!--                                  <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                                    <div class="col-sm-10">
+                                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"> Remember me
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div> -->
+                               <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                      <button type="submit" class="btn btn-primary" id="save_form"><i class="fa fa-save fa-fw"></i>Save</button>
+                                      <button type="button" class="btn btn-primary" id="cancel_form"><i class="fa fa-times-circle fa-fw"></i>Cancel</button>
+                                    </div>
+                                  </div>
+                                </form>
+                            </div>
+                            <!-- ihaslajk -->
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
                     <!-- /.panel -->
-                </div>
+                <!--</div>-->
