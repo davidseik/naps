@@ -74,13 +74,13 @@
                                   <div class="form-group">
                                     <label for="name_in" class="col-sm-3 control-label">Name</label>
                                     <div class="col-sm-9">
-                                      <input type="text" class="form-control" id="name_in" name="name" title="Example: David" placeholder="Name" maxlength="50" required>
+                                      <input type="text" class="form-control" id="name_in" name="name" title="Only characters, numbers and _ allowed and Cannot be blank" placeholder="Name" maxlength="50" pattern="[a-zA-Z0-9\s]+" required>
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label for="last_name_in" class="col-sm-3 control-label">Last Name</label>
                                     <div class="col-sm-9">
-                                      <input type="Text" class="form-control" id="last_name_in" name="last_name" placeholder="Last Name" maxlength="50"  required>
+                                      <input type="Text" class="form-control" id="last_name_in" name="last_name" title="Only characters, numbers and _ allowed and Cannot be blank" placeholder="Last Name" maxlength="50" pattern="[a-zA-Z0-9\s]+"  required>
                                     </div>
                                   </div>
                                   <div class="form-group">
@@ -92,7 +92,13 @@
                                   <div class="form-group">
                                     <label for="password_in" class="col-sm-3 control-label">Password</label>
                                     <div class="col-sm-9">
-                                      <input type="password" class="form-control" name="pwd" id="pwd_in" placeholder="*********">
+                                      <input type="password" class="form-control" name="password" id="pwd_in" placeholder="*********">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="password_in" class="col-sm-3 control-label">Repeat Password</label>
+                                    <div class="col-sm-9">
+                                      <input type="password" class="form-control" id="pwd_in_rpt" placeholder="*********">
                                     </div>
                                   </div>
                                    <div class="form-group">

@@ -5,6 +5,7 @@ class Admin_user extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('admin_user/admin_user_model');
+		$this->load->helper('security');
 		$this->check_ses = new Session();
 	}
 	public function index()
@@ -31,10 +32,6 @@ class Admin_user extends CI_Controller {
 
 		$this->template->write('module_name','Administration Users');
 
-
-		$this->get_admin_user();
-
-
 		$this->template->render();
 	}
 
@@ -44,6 +41,27 @@ class Admin_user extends CI_Controller {
 
 	public function get_user_data(){
 		echo json_encode($this->admin_user_model->get_user_data($_POST['id']));
+	}
+
+	public function add_user(){
+		$data = $this->security->xss_clean($_POST["data"]);
+		$params = array();
+		parse_str($data,$params);
+		$result = $this->admin_user_model->add_user($params);
+		echo json_encode($result);
+	}
+
+	public function update_user(){
+		$params = array();
+		parse_str($_POST["data"],$params);
+		$result = $this->admin_user_model->update_user($params);
+		echo json_encode($result);
+	}
+
+		public function delete_user(){
+		$id = $this->security->xss_clean($_POST["id"]);
+		$res = $this->admin_user_model->delete_user($id);
+		echo json_encode($res);
 	}
 
 
