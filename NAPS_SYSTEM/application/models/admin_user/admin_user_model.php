@@ -22,7 +22,12 @@ class Admin_user_model extends CI_Model {
 
 	function update_user($params){
 		$user = $this->get_user_data($params['id_admin_user']);
+		if(isset($params['password'])){
+			$params['password'] = md5($params['password']);
+		}
+
 		if($user['mail'] == $params['mail']){
+			//$params['password'] = md5($params['password']);
 			$this->db->where('id_admin_user', $params['id_admin_user']);
 			$this->db->update('admin_user', $params);
 			$result = array("response"=>1); 

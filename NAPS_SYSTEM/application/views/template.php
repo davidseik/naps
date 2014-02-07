@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url(); ?>css/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>css/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <!-- <link href="<?= base_url(); ?>css/main/main.css" rel="stylesheet"> -->

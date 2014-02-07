@@ -23,6 +23,10 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#see_all").on("click",function(){
+		console.log("See All Score");
+	});
+
 	init();
 
 });

@@ -27,10 +27,74 @@ body {
 	min-width: 200px;
 }
 
+.btn-md{
+	padding:5px 15px;
+	font-size: 1.1em;
+	/*min-width: 50px;*/
+}
+
+.user_img_cont{
+	padding:10px 10px;
+}
+.user_img{
+	max-width:100% !important;
+    height:auto;
+    display:block;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.maincontainer{
+	border-right:1px solid #c3c3c3;
+}
+
+.maincontainer .row{
+	padding-bottom: 50px;
+}
+
+.top3 .row{
+	padding-bottom: 10px;
+	padding-left:10px;
+	float:left;
+}
+
+
+.fa-fw{
+	margin-right: 5px;
+}
+
+@media screen and (max-width: 1081px){
+	.top3 .row{
+		font-size: 0.8em;
+	}
+
+}
+
+
+@media screen and (max-width: 992px){
+	.maincontainer{
+		border-right:none;
+		border-bottom:1px solid #c3c3c3;
+	}
+	.user_img{
+		max-width:60% !important;
+	}
+	.top3 .row{
+		font-size:1em;
+		float:none;
+	}
+
+}
+
+
+
+
 @media screen and (max-width: 768px){
 	.btn-lg {
 		font-size: 2.5em;
 	}
+
+
 }
 
 @media screen and (max-width: 500px){
