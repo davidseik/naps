@@ -18,7 +18,7 @@ class Main extends CI_Controller {
 		$error = $this->get_error_data($err); // We get the error string
 		$this->template->write_view('menu', 'navigation/user_nav', $data['menu_data'], FALSE);
 		$this->template->write_view('error', 'error/error', $error, FALSE);
-		$this->template->write_view('content', 'main/main', $data['menu_data'], FALSE);
+		$this->template->write_view('content', 'main/main', array("data"=>$data), FALSE);
 		$this->template->render();
 	}
 
@@ -36,11 +36,24 @@ class Main extends CI_Controller {
 				"last_name"=>$session_data["last_name"],
 				"mail"=>$session_data["mail"]
 			);
+
+			$user_data = $this->main_model->get_user_data();
+			$result = array("menu_data"=>$menu_data, "user_data"=>$user_data);
+			//var_dump();
+
+
 		}else{
 			$menu_data = array("auth"=>0);
+			$result = array("menu_data"=>$menu_data);
 		}
-		$result = array("menu_data"=>$menu_data);
+
+		//var_dump($result);
 		return $result;
+	}
+
+	public function get_user_topics(){
+		//var_dump($_POST);
+		echo json_encode($this->main_model->get_user_topics($_POST['id']));
 	}
 
 	/*

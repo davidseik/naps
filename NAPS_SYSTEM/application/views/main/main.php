@@ -1,10 +1,30 @@
 
 	<?php
-		if($auth){
+	//	var_dump($data);
+    if($data["menu_data"]["auth"]){
 	?>
-		<div class="col-md-12" style="margin-bottom:50px; border-bottom:1px solid #c3c3c3; padding-bottom:10px">
-			<button type="button" class="btn btn-lg btn-primary" id="sort_button">Sort</button>
-		</div>
+		<div class="col-md-12"style="margin-bottom:50px; border-bottom:1px solid #c3c3c3; padding-bottom:10px;">
+      <div class="col-md-4">
+         <select class="form-control sort_select" id="user_select" name="user">
+            <option value="0" selected="selected">Random User</option>
+            <?php
+              foreach($data["user_data"] as $row){
+            ?>
+              <option value=<?= $row["id_user"] ?>><?= $row["name"].' '.$row['last_name']  ?></option>
+            <?php
+              }
+            ?>
+          </select>
+      </div>
+      <div class="col-md-4">
+          <select class="form-control sort_select" id="topic_select" name="topic">
+            <option value="0" selected="selected">Random Topic</option>
+          </select>
+      </div>
+      <div class="col-md-4">
+  			<button type="button" class="btn btn-lg btn-primary" id="sort_button">Sort</button>
+  		</div>
+    </div>
 
 	<?php
 	}
@@ -12,8 +32,12 @@
 
 
 <div class="maincontainer col-md-10" >
-<!--       <h1>Not Another Presentation (Rating) System</h1> 
-      <p> Today Presenting</p> -->
+      <div class="row">
+       <div class="col-md-12">
+          <h1> Presentation Rating System</h1>
+          <h2> Today Presenting</h2>
+       </div> 
+      </div>
       <div class="row">
       		<div class="col-md-3 user_img_cont">
       			<img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/benja.jpg" class="user_img" />

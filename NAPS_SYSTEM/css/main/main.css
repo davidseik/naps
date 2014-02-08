@@ -22,9 +22,10 @@ body {
 }
 
 .btn-lg {
-	padding:20px 20%;
-	font-size: 3.5em;
-	min-width: 200px;
+	padding:8px 10%;
+	font-size: 1.5em;
+	/*min-width: 200px;*/
+	width: 100%;
 }
 
 .btn-md{
@@ -61,6 +62,12 @@ body {
 
 .fa-fw{
 	margin-right: 5px;
+}
+
+.sort_select{
+	margin-bottom:10px; 
+	height:60px; 
+	font-size:1.0em;
 }
 
 @media screen and (max-width: 1081px){

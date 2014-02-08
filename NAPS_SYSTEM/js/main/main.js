@@ -9,7 +9,32 @@ $(document).ready(function(){
 	}
 
 	$("#sort_button").on("click",function(){
-		console.log("wooo");
+		//console.log("wooo");
+		var user_select = $("#user_select").val();
+		var topic_select = $("#topic_select").val();
+		console.log(user_select , topic_select);
+	});
+
+	$("#user_select").on("change",function(e){
+		$.ajax({
+			url : 'main/main/get_user_topics',
+			dataType : "json",
+			cache : false,
+			data : {
+				id : $(this).val()
+			},
+			type : 'post',
+			success : function(output) {
+				var topic_select = $('#topic_select');
+				topic_select.find('option:gt(0)').remove();
+					$.each(output, function (i, item) {
+					    topic_select.append($('<option>', { 
+					        value: item.id_topic,
+					        text : item.title 
+					    }));
+					});
+				}
+		});
 	});
 
 	$("#remember_me").on("change",function(){
