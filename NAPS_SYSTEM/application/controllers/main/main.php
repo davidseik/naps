@@ -39,21 +39,45 @@ class Main extends CI_Controller {
 
 			$user_data = $this->main_model->get_user_data();
 			$result = array("menu_data"=>$menu_data, "user_data"=>$user_data);
-			//var_dump();
 
 
 		}else{
 			$menu_data = array("auth"=>0);
+
+
+
 			$result = array("menu_data"=>$menu_data);
 		}
 
-		//var_dump($result);
+			$presentation_data = $this->main_model->get_active_presentation();
+			$arr_length = count($presentation_data);
+			for($i = 0; $i<$arr_length; $i++ ){ // Format of date
+				$time = strtotime($presentation_data[$i]['date']);
+				$newformat = date('F jS, Y',$time);
+				$presentation_data[$i]['date'] = $newformat;
+			}
+
+			$result['presentation_data'] = $presentation_data;
+
+
 		return $result;
 	}
 
 	public function get_user_topics(){
-		//var_dump($_POST);
 		echo json_encode($this->main_model->get_user_topics($_POST['id']));
+	}
+
+	public function sort_user_topic(){
+
+		$user_select = $_POST['user_select'];
+		$topic_select = $_POST['topic_select'];
+		$result = $this->main_model->sort_user_topic($user_select,$topic_select);
+		echo json_encode($result);
+	}
+
+	public function set_user_topic_presented(){
+		$this->main_model->set_user_topic_presented($_POST['id_user'],$_POST['id_topic']);
+		echo json_encode(array('response'=>1));
 	}
 
 	/*

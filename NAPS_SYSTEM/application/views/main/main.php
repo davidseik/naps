@@ -38,9 +38,39 @@
           <h2> Today Presenting</h2>
        </div> 
       </div>
-      <div class="row">
+      <?php
+      //var_dump($data);
+        if(count($data["presentation_data"]) == 0){
+          //echo "No presentation :(";
+        ?>
+          <h2>:'( No presentations right now</h2>
+        <?php
+          }
+          ?>
+      <?php
+
+        foreach ($data["presentation_data"] as $p_data) {
+      
+      ?>
+        <div class="row">
+          <div class="col-md-3 user_img_cont">
+            <img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/<?= $p_data['picture'] ?>" class="user_img" />
+          </div>
+
+        <div class="col-md-6 user_data_cont">  
+            <h2><?= $p_data['name'].' '.$p_data['last_name']?></h2>
+            <h2><?= $p_data['title'] ?></h2>
+            <h2><?= $p_data['date'] ?></h2>
+            <button type="button" class="btn btn-md btn-primary" id="eval<?= $p_data['id_user']?>"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button> 
+          </div>
+        </div>
+      <?php
+        }
+      ?>
+
+<!--       <div class="row">
       		<div class="col-md-3 user_img_cont">
-      			<img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/benja.jpg" class="user_img" />
+      			<img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/2.jpg" class="user_img" />
       		</div>
       		 <div class="col-md-6 user_data_cont">	
       		 	<h2>Benjamin Hurtado</h2>
@@ -48,8 +78,8 @@
       		 	<h2>February 6, 2014</h2>
       		 	<button type="button" class="btn btn-md btn-primary"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button>
       		</div>
-      </div>
-      <div class="row">
+      </div> -->
+ <!--      <div class="row">
       		<div class="col-md-3 user_img_cont">
       			<img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/david.jpg" class="user_img" />
       		</div>
@@ -59,7 +89,7 @@
       		 	<h2>February 6, 2014</h2>
       		 	<button type="button" class="btn btn-md btn-primary"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button>
       		</div>
-      </div>
+      </div> -->
 
 
  </div>
