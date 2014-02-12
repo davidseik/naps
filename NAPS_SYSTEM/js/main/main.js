@@ -22,6 +22,7 @@ $(document).ready(function(){
 			},
 			type : 'post',
 			success : function(output) {
+					if(output.validate){
 						var res = confirm("You got: "+output.name+" with the topic: "+output.title+", do you want to assign it?");
 						if(res){
 							$.ajax({
@@ -43,6 +44,9 @@ $(document).ready(function(){
 									}
 							});
 						}
+					}else{
+						alert("User is already presenting this topic today!");
+					}
 				}
 		});
 	});

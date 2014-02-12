@@ -1,6 +1,5 @@
 
 	<?php
-	//	var_dump($data);
     if($data["menu_data"]["auth"]){
 	?>
 		<div class="col-md-12"style="margin-bottom:50px; border-bottom:1px solid #c3c3c3; padding-bottom:10px;">
@@ -39,9 +38,7 @@
        </div> 
       </div>
       <?php
-      //var_dump($data);
         if(count($data["presentation_data"]) == 0){
-          //echo "No presentation :(";
         ?>
           <h2>:'( No presentations right now</h2>
         <?php
@@ -67,30 +64,6 @@
       <?php
         }
       ?>
-
-<!--       <div class="row">
-      		<div class="col-md-3 user_img_cont">
-      			<img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/2.jpg" class="user_img" />
-      		</div>
-      		 <div class="col-md-6 user_data_cont">	
-      		 	<h2>Benjamin Hurtado</h2>
-      		 	<h2>jQuery Design Patterns</h2>
-      		 	<h2>February 6, 2014</h2>
-      		 	<button type="button" class="btn btn-md btn-primary"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button>
-      		</div>
-      </div> -->
- <!--      <div class="row">
-      		<div class="col-md-3 user_img_cont">
-      			<img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/david.jpg" class="user_img" />
-      		</div>
-      		 <div class="col-md-6 user_data_cont">	
-      		 	<h2>David Castro</h2>
-      		 	<h2>CodeIgniter</h2>
-      		 	<h2>February 6, 2014</h2>
-      		 	<button type="button" class="btn btn-md btn-primary"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button>
-      		</div>
-      </div> -->
-
 
  </div>
  <div class="top3 col-md-2">

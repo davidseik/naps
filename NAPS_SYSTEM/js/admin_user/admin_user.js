@@ -130,9 +130,8 @@ $(document).ready(function(){
 				}
 		});
 	}
-	//update_user
+
 	function update_user(serialized){
-		//console.log(serialized);
 		$.ajax({
 			url : 'admin_user/admin_user/update_user',
 			dataType : "json",

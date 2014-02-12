@@ -13,6 +13,8 @@ class Main extends CI_Controller {
 		$this->template->add_js("js/main/main.js");
 		$this->template->add_css("css/main/main.css");
 		
+		//$this->main_model->clean_everything();
+
 		$session_data = $this->session->all_userdata(); // We get the session Data
 		$data = $this->get_main_view_data($session_data); // This method gets all the data for the MAIN view
 		$error = $this->get_error_data($err); // We get the error string
@@ -30,43 +32,57 @@ class Main extends CI_Controller {
 	public function get_main_view_data($session_data){ 
 		$result;
 		if(isset($session_data['auth'])){
-			$menu_data = array(
+			$menu_data = array( // This is the data for the menu
 				"auth"=>1,
 				"name"=>$session_data["name"],
 				"last_name"=>$session_data["last_name"],
 				"mail"=>$session_data["mail"]
 			);
 
-			$user_data = $this->main_model->get_user_data();
+			$user_data = $this->main_model->get_user_data(); // Getting all the data from the users
 			$result = array("menu_data"=>$menu_data, "user_data"=>$user_data);
 
-
-		}else{
+		}else{ 
 			$menu_data = array("auth"=>0);
-
-
-
 			$result = array("menu_data"=>$menu_data);
 		}
 
-			$presentation_data = $this->main_model->get_active_presentation();
-			$arr_length = count($presentation_data);
-			for($i = 0; $i<$arr_length; $i++ ){ // Format of date
-				$time = strtotime($presentation_data[$i]['date']);
-				$newformat = date('F jS, Y',$time);
-				$presentation_data[$i]['date'] = $newformat;
-			}
-
-			$result['presentation_data'] = $presentation_data;
-
+		/*
+			Get the information of the active presentations to show in the main view.
+		*/
+		$presentation_data = $this->main_model->get_active_presentation();
+		$arr_length = count($presentation_data);
+		for($i = 0; $i<$arr_length; $i++ ){ 
+			$time = strtotime($presentation_data[$i]['date']); // formatting the date
+			$newformat = date('F jS, Y',$time);
+			$presentation_data[$i]['date'] = $newformat;
+		}
+		$result['presentation_data'] = $presentation_data;
 
 		return $result;
 	}
+
+	/*
+		Name: get_user_topics
+		Usage: gets all the topics by an user ID.
+	*/
 
 	public function get_user_topics(){
 		echo json_encode($this->main_model->get_user_topics($_POST['id']));
 	}
 
+
+	/*
+		Name: sort_user_topic
+		Usage: Calls the method of sort_user_topic in the model to retrieve the user information
+		according to the selected options in the sorting view provided to the admin. Returns the
+		information of the user and the topic.
+
+			Three States
+			a) Everything Random
+			b) User Selected, Topic Random
+			c) User Selected, Topic Selected
+	*/
 	public function sort_user_topic(){
 
 		$user_select = $_POST['user_select'];
@@ -75,10 +91,15 @@ class Main extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	/*
+		Name: set_user_topic_presented
+		Usage: Receives an user and a topic and sets that as an active presentation.
+	*/
 	public function set_user_topic_presented(){
 		$this->main_model->set_user_topic_presented($_POST['id_user'],$_POST['id_topic']);
 		echo json_encode(array('response'=>1));
 	}
+
 
 	/*
 		get_error_data
@@ -100,9 +121,9 @@ class Main extends CI_Controller {
 	}
 
 	/*
-		sign_in
+		Name: sign_in
 
-		This functions uses the provided mail and password to sign in
+		Usage: This functions uses the provided mail and password to sign in
 		depending on the status received from the database we use a redirection and display
 		an error if necessary.
 	*/

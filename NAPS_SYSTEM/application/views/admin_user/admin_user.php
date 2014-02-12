@@ -1,8 +1,3 @@
-
-<?php
-    //var_dump($user_data[0]);
-	//foreach($user_data as $row){
-?>
                    <div class="panel panel-default">
                         <div class="panel-heading">
                             Users
@@ -36,8 +31,6 @@
                                                 <td><?= $row['last_log']?></td>
                                                 <td><?= $row['active']?></td>
                                                 <td><button type="button" class="btn btn-sm btn-primary btn_tb clickable e_btn" id="edit_btn<?= $row['id_admin_user']?>"><i class="fa fa-edit fa-fw"></i>Edit</button><button type="button" class="btn btn-sm btn-primary btn_tb d_btn clickable" id="delete_btn<?= $row['id_admin_user']?>"><i class="fa fa-times-circle fa-fw"></i>Delete</button></td>
-<!--                                                 <td class="center">4</td>
-                                                <td class="center">X</td> -->
                                             </tr>
 
                                         <?php
@@ -119,21 +112,6 @@
                                         </select>
                                     </div>
                                   </div>                                                                     
- <!--                                  <div class="form-group">
-                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                                    <div class="col-sm-10">
-                                      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                      <div class="checkbox">
-                                        <label>
-                                          <input type="checkbox"> Remember me
-                                        </label>
-                                      </div>
-                                    </div>
-                                  </div> -->
                                <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
                                       <button type="submit" class="btn btn-primary" id="save_form"><i class="fa fa-save fa-fw"></i>Save</button>
@@ -148,4 +126,3 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-                <!--</div>-->
