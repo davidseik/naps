@@ -54,16 +54,38 @@
             <img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/<?= $p_data['picture'] ?>" class="user_img" />
           </div>
 
-        <div class="col-md-6 user_data_cont">  
-            <h2><?= $p_data['name'].' '.$p_data['last_name']?></h2>
-            <h2><?= $p_data['title'] ?></h2>
-            <h2><?= $p_data['date'] ?></h2>
-            <button type="button" class="btn btn-md btn-primary" id="eval<?= $p_data['id_user']?>"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button> 
+          <div class="cont">
+            <div class="card" id="flips<?= $p_data['id_user'] ?>">
+              <div class="col-md-6 user_data_cont front" id="user_present<?= $p_data['id_user'] ?>">  
+                <h2><?= $p_data['name'].' '.$p_data['last_name']?></h2>
+                <h2><?= $p_data['title'] ?></h2>
+                <h2><?= $p_data['date'] ?></h2>
+                <button type="button" class="btn btn-md btn-primary eval_btn" id="eval<?= $p_data['id_user']?>"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button> 
+              </div>
+              
+              <div class="col-md-6 user_data_cont back nodisplay" id="user_form<?= $p_data['id_user'] ?>">  
+                 <form id="rate_form<?= $p_data['id_user'] ?>">
+                  <input type="hidden" name="id_topic" value='<?= $p_data["id_topic"] ?>' />
+                  <input type="hidden" name="id_user" value='<?= $p_data['id_user'] ?>' />
+                  <h2>Rate</h2>
+                  <h2><?= $p_data['name'].' '.$p_data['last_name']?></h2>
+                  <h2>Topic</h2>
+                  <h2><?= $p_data['title'] ?></h2>
+                  
+                  <div class="rate" name="rating" style="margin-bottom:20px"></div>
+                  <h2>Comment</h2>
+                  <div class="row"><textarea name="comment" class="form-control" rows="3"></textarea></div>
+                </form>
+                <button type="button" class="btn btn-md btn-primary save_btn" id="save<?= $p_data['id_user']?>"><i class="fa fa-save fa-fw"></i>Save</button> 
+              </div>
+            </div>
           </div>
+
         </div>
       <?php
         }
       ?>
+
 
  </div>
  <div class="top3 col-md-2">

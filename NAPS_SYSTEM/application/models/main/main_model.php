@@ -250,7 +250,7 @@ class Main_model extends CI_Model {
 		Usage: Getting all the active presentations from the presentation history to be evaluated.
 	*/	
 	function get_active_presentation(){
-		$this->db->select('user.id_user, user.name, user.last_name, user.picture, topic.title, presentation_history.date');
+		$this->db->select('user.id_user, user.name, user.last_name, user.picture, topic.id_topic, topic.title, presentation_history.date');
 		$this->db->from('presentation_history');
 		$this->db->join('user', 'presentation_history.id_user = user.id_user');
 		$this->db->join('topic', 'topic.id_topic = presentation_history.id_topic');
@@ -258,6 +258,25 @@ class Main_model extends CI_Model {
 		$query = $this->db->get();
 		$result = $query -> result_array();
 		return $result;
+	}
+
+	function insert_rating($params){
+		//var_dump($this->config->item('max_rates'));
+		$data_rating = array(
+		   'id_topic' => $params['id_topic'],
+		   'score' => $params['score'],
+		   'date' => date("Y-m-d h:i:s"),
+		   'comment'=>$params['comment']
+		);
+
+		$this->db->insert('rating', $data_rating); 
+		$insert_id = $this->db->insert_id();
+		
+		$data_user_has_rating = array(
+		   'id_rating' => $insert_id,
+		   'id_user' => $params['id_user']
+		);
+		$this->db->insert('user_has_rating', $data_user_has_rating); 
 	}
 }
 ?>

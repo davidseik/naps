@@ -358,6 +358,13 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+
+	Max Rates per user
+*/
+
+$config['max_rates'] = 10;
+
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

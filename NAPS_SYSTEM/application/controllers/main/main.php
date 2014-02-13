@@ -11,6 +11,7 @@ class Main extends CI_Controller {
 	public function index($err = '0')
 	{
 		$this->template->add_js("js/main/main.js");
+		$this->template->add_js("js/raty/jquery.raty.js");
 		$this->template->add_css("css/main/main.css");
 		
 		//$this->main_model->clean_everything();
@@ -22,6 +23,15 @@ class Main extends CI_Controller {
 		$this->template->write_view('error', 'error/error', $error, FALSE);
 		$this->template->write_view('content', 'main/main', array("data"=>$data), FALSE);
 		$this->template->render();
+	}
+
+
+	public function insert_rating(){
+		$data = $this->security->xss_clean($_POST["data"]);
+		$params = array();
+		parse_str($data,$params);
+		$this->main_model->insert_rating($params);
+		//var_dump($params);
 	}
 
 	/*

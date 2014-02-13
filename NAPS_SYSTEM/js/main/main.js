@@ -6,6 +6,8 @@ $(document).ready(function(){
 			$("#mail_input").val(localStorage.mail_input);
 			$("#remember_me").attr("checked","checked");
 		}
+
+		$('.rate').raty({path: '/NAPS/NAPS_SYSTEM/js/raty/img', size   : 35, width:false});
 	}
 
 	$("#sort_button").on("click",function(){
@@ -87,6 +89,38 @@ $(document).ready(function(){
 	$("#see_all").on("click",function(){
 		console.log("See All Score");
 	});
+
+	$(".eval_btn").on("click",function(){
+		var id = this.id.replace("eval","");
+		console.log($("#flips"+id));
+
+		$("#flips"+id).toggleClass('flipped');
+		
+		$("#user_present"+id).toggleClass('nodisplay');
+		$("#user_form"+id).toggleClass('nodisplay');
+	});
+
+	$(".save_btn").on("click",function(){
+		var id = this.id.replace("save","");
+		var data = $("#rate_form"+id).serialize();
+		console.log(data);
+		$.ajax({
+			url : 'main/main/insert_rating',
+			dataType : "json",
+			cache : false,
+			data : {
+				data : data
+			},
+			type : 'post',
+			success : function(output) {
+					console.log(output);
+				}
+		});
+		// $("#flips"+id).toggleClass('flipped');
+		// $("#user_present"+id).toggleClass('nodisplay');
+		// $("#user_form"+id).toggleClass('nodisplay');
+	});
+
 
 	init();
 

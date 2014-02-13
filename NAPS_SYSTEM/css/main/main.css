@@ -36,6 +36,7 @@ body {
 
 .user_img_cont{
 	padding:10px 10px;
+	-webkit-backface-visibility: hidden ;
 }
 .user_img{
 	max-width:100% !important;
@@ -69,6 +70,52 @@ body {
 	height:60px; 
 	font-size:1.0em;
 }
+
+.cont{
+  -webkit-perspective: 800px;
+     -moz-perspective: 800px;
+       -o-perspective: 800px;
+          perspective: 800px;	
+}
+
+.card{
+	  -webkit-transition: -webkit-transform .5s;
+	 -moz-transition: -moz-transform .5s;
+	   -o-transition: -o-transform .5s;
+	      transition: transform .5s;
+	-webkit-transform-style: preserve-3d;
+	 -moz-transform-style: preserve-3d;
+	   -o-transform-style: preserve-3d;
+	      transform-style: preserve-3d;
+}
+
+.nodisplay{
+	display:none;
+}
+
+.card.flipped {
+  -webkit-transform: rotateY( 180deg );
+     -moz-transform: rotateY( 180deg );
+       -o-transform: rotateY( 180deg );
+          transform: rotateY( 180deg );
+}
+
+.card .user_data_cont{
+	/*display: block;*/
+      -webkit-backface-visibility: hidden;
+         -moz-backface-visibility: hidden;
+           -o-backface-visibility: hidden;
+              backface-visibility: hidden;
+}
+
+.card .back{
+	     -webkit-transform: rotateY( 180deg );
+         -moz-transform: rotateY( 180deg );
+           -o-transform: rotateY( 180deg );
+              transform: rotateY( 180deg );
+}
+
+
 
 @media screen and (max-width: 1081px){
 	.top3 .row{
