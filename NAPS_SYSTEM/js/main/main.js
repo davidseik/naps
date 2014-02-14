@@ -7,6 +7,11 @@ $(document).ready(function(){
 			$("#remember_me").attr("checked","checked");
 		}
 
+		if(localStorage.rate_check_active == 1){
+			$(".rate_mail_input").val(localStorage.rate_mail);
+			$(".rate_mail_check").attr("checked","checked");
+		}
+
 		$('.rate').raty({path: '/NAPS/NAPS_SYSTEM/js/raty/img', size   : 35, width:false});
 	}
 
@@ -86,13 +91,28 @@ $(document).ready(function(){
 		}
 	});
 
+	$(".rate_mail_check").on("change",function(){
+		 var mail = $(".rate_mail_input").val();
+		if($(this).is(":checked") && mail!=""){
+			localStorage.rate_mail = mail;
+			localStorage.rate_check_active = 1;
+			$(".rate_mail_input").val(mail);
+			$(".rate_mail_check").attr("checked","checked");
+		}else{
+			 localStorage.rate_mail = "";
+			 localStorage.rate_check_active = 0;
+			$(".rate_mail_input").val("");
+			$(".rate_mail_check").removeAttr('checked');
+		}
+	});
+
 	$("#see_all").on("click",function(){
 		console.log("See All Score");
 	});
 
 	$(".eval_btn").on("click",function(){
 		var id = this.id.replace("eval","");
-		console.log($("#flips"+id));
+		//console.log($("#flips"+id));
 
 		$("#flips"+id).toggleClass('flipped');
 		
@@ -100,10 +120,34 @@ $(document).ready(function(){
 		$("#user_form"+id).toggleClass('nodisplay');
 	});
 
-	$(".save_btn").on("click",function(){
-		var id = this.id.replace("save","");
-		var data = $("#rate_form"+id).serialize();
-		console.log(data);
+	// $(".save_btn").on("click",function(){
+	// 	var id = this.id.replace("save","");
+	// 	var data = $("#rate_form"+id).serialize();
+	// 	console.log(data);
+	// 	$.ajax({
+	// 		url : 'main/main/insert_rating',
+	// 		dataType : "json",
+	// 		cache : false,
+	// 		data : {
+	// 			data : data
+	// 		},
+	// 		type : 'post',
+	// 		success : function(output) {
+
+	// 				if(output.response){
+
+	// 				}else{
+	// 					alert("something wrong happened with your evaluation");
+	// 				}
+	// 			}
+	// 	});
+	// 	// $("#flips"+id).toggleClass('flipped');
+	// 	// $("#user_present"+id).toggleClass('nodisplay');
+	// 	// $("#user_form"+id).toggleClass('nodisplay');
+	// });
+
+	$(".rate_form").submit(function(e){	
+		var data = $(this).serialize();
 		$.ajax({
 			url : 'main/main/insert_rating',
 			dataType : "json",
@@ -113,12 +157,15 @@ $(document).ready(function(){
 			},
 			type : 'post',
 			success : function(output) {
-					console.log(output);
+
+					if(output.response){
+
+					}else{
+						alert("something wrong happened with your evaluation");
+					}
 				}
 		});
-		// $("#flips"+id).toggleClass('flipped');
-		// $("#user_present"+id).toggleClass('nodisplay');
-		// $("#user_form"+id).toggleClass('nodisplay');
+		e.preventDefault();
 	});
 
 

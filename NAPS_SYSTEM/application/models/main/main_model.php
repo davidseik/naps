@@ -243,6 +243,8 @@ class Main_model extends CI_Model {
 		$this->db->update('user_has_topic', array('presented'=>0));
 		$this->db->update('user', array('presented'=>0));
 		$this->db->empty_table('presentation_history'); 
+		$this->db->empty_table('user_has_rating');
+		$this->db->empty_table('rating');
 	}
 
 	/*
@@ -262,6 +264,8 @@ class Main_model extends CI_Model {
 
 	function insert_rating($params){
 		//var_dump($this->config->item('max_rates'));
+		$result;
+
 		$data_rating = array(
 		   'id_topic' => $params['id_topic'],
 		   'score' => $params['score'],
@@ -270,13 +274,22 @@ class Main_model extends CI_Model {
 		);
 
 		$this->db->insert('rating', $data_rating); 
-		$insert_id = $this->db->insert_id();
-		
-		$data_user_has_rating = array(
-		   'id_rating' => $insert_id,
-		   'id_user' => $params['id_user']
-		);
-		$this->db->insert('user_has_rating', $data_user_has_rating); 
+		if($this->db->affected_rows() == 1){
+			$insert_id = $this->db->insert_id();
+			$data_user_has_rating = array(
+			   'id_rating' => $insert_id,
+			   'id_user' => $params['id_user']
+			);
+			$this->db->insert('user_has_rating', $data_user_has_rating);
+			if($this->db->affected_rows() == 1){
+				$result = array("response"=>1);
+			}else{ // Failed to add rating to user
+				$result = array("response"=>0);
+			}
+		}else{
+			$result = array("response"=>0);
+		} 
+		return $result;
 	}
 }
 ?>

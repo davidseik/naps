@@ -27,11 +27,14 @@ class Main extends CI_Controller {
 
 
 	public function insert_rating(){
-		$data = $this->security->xss_clean($_POST["data"]);
 		$params = array();
-		parse_str($data,$params);
-		$this->main_model->insert_rating($params);
-		//var_dump($params);
+		parse_str($_POST['data'],$params);
+		$response = $this->main_model->insert_rating($params);
+		if($response['response']){
+			$session_data = array();			
+			$this->session->set_userdata($session_data);
+		}
+		echo json_encode($response);
 	}
 
 	/*

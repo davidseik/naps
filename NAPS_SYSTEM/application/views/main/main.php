@@ -64,19 +64,29 @@
               </div>
               
               <div class="col-md-6 user_data_cont back nodisplay" id="user_form<?= $p_data['id_user'] ?>">  
-                 <form id="rate_form<?= $p_data['id_user'] ?>">
+                 <form id="rate_form<?= $p_data['id_user'] ?>" class="rate_form">
                   <input type="hidden" name="id_topic" value='<?= $p_data["id_topic"] ?>' />
                   <input type="hidden" name="id_user" value='<?= $p_data['id_user'] ?>' />
-                  <h2>Rate</h2>
+<!--                   <h2>Rate</h2> -->
                   <h2><?= $p_data['name'].' '.$p_data['last_name']?></h2>
-                  <h2>Topic</h2>
+<!--                   <h2>Topic</h2> -->
                   <h2><?= $p_data['title'] ?></h2>
                   
                   <div class="rate" name="rating" style="margin-bottom:20px"></div>
-                  <h2>Comment</h2>
-                  <div class="row"><textarea name="comment" class="form-control" rows="3"></textarea></div>
+<!--                   <h2>Comment</h2> -->
+                  <div class="row" style="padding-bottom:10px;"><textarea name="comment" class="form-control" rows="3" placeholder="Place your comment here"></textarea></div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <input type="text" placeholder="Your Key (Mail)" class="form-control rate_mail_input" name="mail" size="25" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                      <span style="font-size:.8em; float:left;"><input type="checkbox" class="rate_mail_check" style="margin-right:5px">Remember Mail</span>
+                    </div>
+<!--                     <div class="col-md-3">
+                      <span style="font-size:.8em; float:left;"><input type="checkbox" id="rate_mail" style="margin-right:5px" checked="checked">Remember Mail</span>
+                    </div> -->
+                  </div>
+                   <button type="submit" class="btn btn-md btn-primary save_btn" id="save<?= $p_data['id_user']?>"><i class="fa fa-save fa-fw"></i>Save</button> 
                 </form>
-                <button type="button" class="btn btn-md btn-primary save_btn" id="save<?= $p_data['id_user']?>"><i class="fa fa-save fa-fw"></i>Save</button> 
+               
               </div>
             </div>
           </div>
