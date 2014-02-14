@@ -8,11 +8,11 @@ class Main_model extends CI_Model {
 		2.- if it doesn't eixst return a response of 3 which is a fail to login.
 	*/
 	function sign_in($mail,$pass){
-		$query = $this->db->query('SELECT id_admin_user, name, last_name, category, mail, active, last_log FROM admin_user WHERE mail="'.$mail.'" AND password="'.md5($pass).'" AND active = 1');
+		$query = $this->db->query('SELECT id_user, name, last_name, category, mail, active, last_log FROM user WHERE mail="'.$mail.'" AND password="'.md5($pass).'" AND active = 1');
 		$arr;
 		if($query->num_rows()==1){
 			$user = $query -> row_array();
-			$this -> db -> update('admin_user', array('last_log' => date("Y-m-d h:i:s")), array('id_admin_user' => $user['id_admin_user']));
+			$this -> db -> update('user', array('last_log' => date("Y-m-d h:i:s")), array('id_user' => $user['id_user']));
 			$arr = array("resp"=>1,"user"=>$user);
 		}else{
 			// $query = $this -> db -> get_where('admin_user', array('mail' => $mail));
@@ -31,7 +31,7 @@ class Main_model extends CI_Model {
 		Usage: gets the information of all the active  presentation users in the system.
 	*/	
 	function get_user_data(){
-		$query = $this->db->query('SELECT * FROM user WHERE active = 1');
+		$query = $this->db->query('SELECT * FROM user WHERE active = 1 AND category = 2');
 		$users = $query -> result_array();
 		return $users;
 	}
@@ -176,7 +176,7 @@ class Main_model extends CI_Model {
 	*/	
 
 	function get_random_user(){
-		$query = $this->db->query('SELECT * FROM user WHERE presented = 0 ORDER BY RAND() LIMIT 1');
+		$query = $this->db->query('SELECT * FROM user WHERE presented = 0 AND category = 2 ORDER BY RAND() LIMIT 1');
 		$user = $query -> row_array();
 		return $user;
 	}

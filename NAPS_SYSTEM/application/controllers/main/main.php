@@ -47,9 +47,11 @@ class Main extends CI_Controller {
 		if(isset($session_data['auth'])){
 			$menu_data = array( // This is the data for the menu
 				"auth"=>1,
+				"id_user"=>$session_data["id_user"],
 				"name"=>$session_data["name"],
 				"last_name"=>$session_data["last_name"],
-				"mail"=>$session_data["mail"]
+				"mail"=>$session_data["mail"],
+				"category"=>$session_data["category"]
 			);
 
 			$user_data = $this->main_model->get_user_data(); // Getting all the data from the users
@@ -149,6 +151,7 @@ class Main extends CI_Controller {
  			$info = $user['user'];
 			$session_data = array(
 					'auth'=> 1,
+					'id_user'=>$info['id_user'],
 					'name'=>$info['name'],
 					'last_name'=>$info['last_name'],
 					'mail'=>$info['mail'],

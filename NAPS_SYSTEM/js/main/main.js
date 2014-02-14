@@ -6,12 +6,6 @@ $(document).ready(function(){
 			$("#mail_input").val(localStorage.mail_input);
 			$("#remember_me").attr("checked","checked");
 		}
-
-		if(localStorage.rate_check_active == 1){
-			$(".rate_mail_input").val(localStorage.rate_mail);
-			$(".rate_mail_check").attr("checked","checked");
-		}
-
 		$('.rate').raty({path: '/NAPS/NAPS_SYSTEM/js/raty/img', size   : 35, width:false});
 	}
 
@@ -88,21 +82,6 @@ $(document).ready(function(){
 		}else{
 			 localStorage.mail_input = "";
 			 localStorage.check_active = 0;
-		}
-	});
-
-	$(".rate_mail_check").on("change",function(){
-		 var mail = $(".rate_mail_input").val();
-		if($(this).is(":checked") && mail!=""){
-			localStorage.rate_mail = mail;
-			localStorage.rate_check_active = 1;
-			$(".rate_mail_input").val(mail);
-			$(".rate_mail_check").attr("checked","checked");
-		}else{
-			 localStorage.rate_mail = "";
-			 localStorage.rate_check_active = 0;
-			$(".rate_mail_input").val("");
-			$(".rate_mail_check").removeAttr('checked');
 		}
 	});
 

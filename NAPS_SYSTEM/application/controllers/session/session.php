@@ -7,7 +7,15 @@ class Session extends CI_Controller {
 
 	public function check_session(){ // Comeback Later here because I think this is shady
 			if($this->session->userdata('auth')){
-				//Switch of redirections
+				switch($this->session->userdata("category")){
+					case 1:
+					break;
+
+					case 2:
+						header("Location: ".base_url().'index.php/');
+					break;
+
+				}
 			}else{
 				$this->session->sess_destroy();
 				header("Location: ".base_url().'index.php/');

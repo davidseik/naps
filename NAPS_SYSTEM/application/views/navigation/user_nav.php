@@ -14,8 +14,11 @@
         </div>
       <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#">Hello <?= $name.' '.$last_name; ?></a><li>
+            <li class="active"><a href="#">Hello <?= $name.' '.$last_name; ?></a> <input type="hidden" value='<?= $id_user ?>' id="logged_user" /><li>
+            <?php
+              if($category == 1){ ?>
             <li><a href="<?= base_url();?>index.php/dashboard">Dashboard</a></li>
+            <?php }?>
             <li><a href="<?= base_url();?>index.php/session/destroy">Logout</a></li>
           </ul>
       </div>
