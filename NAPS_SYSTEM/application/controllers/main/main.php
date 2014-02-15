@@ -30,10 +30,6 @@ class Main extends CI_Controller {
 		$params = array();
 		parse_str($_POST['data'],$params);
 		$response = $this->main_model->insert_rating($params);
-		if($response['response']){
-			$session_data = array();			
-			$this->session->set_userdata($session_data);
-		}
 		echo json_encode($response);
 	}
 
@@ -65,7 +61,12 @@ class Main extends CI_Controller {
 		/*
 			Get the information of the active presentations to show in the main view.
 		*/
-		$presentation_data = $this->main_model->get_active_presentation();
+		if(isset($menu_data['id_user'])){
+			$presentation_data = $this->main_model->get_active_presentation($menu_data['id_user']);
+		}else{
+			$presentation_data = $this->main_model->get_active_presentation();
+		}
+		
 		$arr_length = count($presentation_data);
 		for($i = 0; $i<$arr_length; $i++ ){ 
 			$time = strtotime($presentation_data[$i]['date']); // formatting the date

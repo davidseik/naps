@@ -54,16 +54,26 @@
           <div class="col-md-3 user_img_cont">
             <img src ="http://localhost:8888/NAPS/NAPS_SYSTEM/img/<?= $p_data['picture'] ?>" class="user_img" />
           </div>
+        <?php 
 
-          <div class="cont">
-            <div class="card" id="flips<?= $p_data['id_user'] ?>">
-              <div class="col-md-6 user_data_cont front" id="user_present<?= $p_data['id_user'] ?>">  
-                <h2><?= $p_data['name'].' '.$p_data['last_name']?></h2>
+          if(!$data["menu_data"]["auth"] ){
+        ?>
+              <div class="col-md-6">  
+                <h2><a href="#"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
                 <h2><?= $p_data['title'] ?></h2>
                 <h2><?= $p_data['date'] ?></h2>
-                <?php if($data["menu_data"]["auth"]){ ?>
+                <!-- <button type="button" class="btn btn-md btn-success"><i class="fa fa-gavel fa-fw"></i>Evaluated</button>  -->
+              </div>          
+        <?php
+        }else if(!$p_data['topic_rated']){
+        ?>
+            <div class="cont">
+            <div class="card" id="flips<?= $p_data['id_user'] ?>">
+              <div class="col-md-6 user_data_cont front" id="user_present<?= $p_data['id_user'] ?>">  
+                <h2><a href="#"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
+                <h2><?= $p_data['title'] ?></h2>
+                <h2><?= $p_data['date'] ?></h2>
                 <button type="button" class="btn btn-md btn-primary eval_btn" id="eval<?= $p_data['id_user']?>"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button> 
-                <?php }?>
               </div>
               
               <div class="col-md-6 user_data_cont back nodisplay" id="user_form<?= $p_data['id_user'] ?>">  
@@ -71,13 +81,9 @@
                   <input type="hidden" name="id_topic" value='<?= $p_data["id_topic"] ?>' />
                   <input type="hidden" name="id_user" value='<?= $p_data['id_user'] ?>' />
                   <input type="hidden" name="id_user_voting" value="<?php if(isset($data["menu_data"]["id_user"])) echo $data["menu_data"]["id_user"]; ?>" />
-<!--                   <h2>Rate</h2> -->
                   <h2><?= $p_data['name'].' '.$p_data['last_name']?></h2>
-<!--                   <h2>Topic</h2> -->
-                  <h2><?= $p_data['title'] ?></h2>
-                  
+                  <h2><?= $p_data['title'] ?></h2>   
                   <div class="rate" name="rating" style="margin-bottom:20px"></div>
-<!--                   <h2>Comment</h2> -->
                   <div class="row" style="padding-bottom:10px;"><textarea name="comment" class="form-control" rows="3" placeholder="Place your comment here"></textarea></div>
                    <button type="submit" class="btn btn-md btn-primary save_btn" id="save<?= $p_data['id_user']?>"><i class="fa fa-save fa-fw"></i>Save</button> 
                 </form>
@@ -85,6 +91,15 @@
               </div>
             </div>
           </div>
+
+        <?php }else{ ?>
+              <div class="col-md-6">  
+                <h2><a href="#"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
+                <h2><?= $p_data['title'] ?></h2>
+                <h2><?= $p_data['date'] ?></h2>
+                <button type="button" class="btn btn-md btn-success"><i class="fa fa-check fa-fw"></i>Evaluated</button> 
+              </div>
+        <?php }?>
 
         </div>
       <?php

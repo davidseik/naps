@@ -99,31 +99,6 @@ $(document).ready(function(){
 		$("#user_form"+id).toggleClass('nodisplay');
 	});
 
-	// $(".save_btn").on("click",function(){
-	// 	var id = this.id.replace("save","");
-	// 	var data = $("#rate_form"+id).serialize();
-	// 	console.log(data);
-	// 	$.ajax({
-	// 		url : 'main/main/insert_rating',
-	// 		dataType : "json",
-	// 		cache : false,
-	// 		data : {
-	// 			data : data
-	// 		},
-	// 		type : 'post',
-	// 		success : function(output) {
-
-	// 				if(output.response){
-
-	// 				}else{
-	// 					alert("something wrong happened with your evaluation");
-	// 				}
-	// 			}
-	// 	});
-	// 	// $("#flips"+id).toggleClass('flipped');
-	// 	// $("#user_present"+id).toggleClass('nodisplay');
-	// 	// $("#user_form"+id).toggleClass('nodisplay');
-	// });
 
 	$(".rate_form").submit(function(e){	
 		var data = $(this).serialize();
@@ -138,7 +113,8 @@ $(document).ready(function(){
 			success : function(output) {
 
 					if(output.response){
-
+						alert("Rating Added Correctly");
+						location.reload();
 					}else{
 						alert("something wrong happened with your evaluation");
 					}

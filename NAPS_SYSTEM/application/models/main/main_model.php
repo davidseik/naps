@@ -251,7 +251,7 @@ class Main_model extends CI_Model {
 		Name: get_active_presentation
 		Usage: Getting all the active presentations from the presentation history to be evaluated.
 	*/	
-	function get_active_presentation(){
+	function get_active_presentation($id_user_voting = 0){
 		$this->db->select('user.id_user, user.name, user.last_name, user.picture, topic.id_topic, topic.title, presentation_history.date');
 		$this->db->from('presentation_history');
 		$this->db->join('user', 'presentation_history.id_user = user.id_user');
@@ -259,15 +259,28 @@ class Main_model extends CI_Model {
 		$this->db->where('presentation_history.active =',1);
 		$query = $this->db->get();
 		$result = $query -> result_array();
+		if($id_user_voting != 0){
+			for($i=0; $i<count($result);$i++){
+				$query2 = $this->db->get_where('user_voted', array('id_user_voting' => $id_user_voting, 'id_user_presenting'=>$result[$i]['id_user'], 'id_topic'=>$result[$i]['id_topic'], 'date'=>date("Y-m-d")));
+				$res = $query2 -> row_array();
+				if($res){
+					$result[$i]["topic_rated"] = 1;
+				}else{
+					$result[$i]["topic_rated"] = 0;
+				}
+			}
+		}
 		return $result;
 	}
 
 	function insert_rating($params){
-		//var_dump($this->config->item('max_rates'));
-		$result;
 
+		$result;
+		$id_user_voting = $params['id_user_voting'];
+		$id_user_presenting = $params['id_user'];
+		$id_topic = $params['id_topic'];
 		$data_rating = array(
-		   'id_topic' => $params['id_topic'],
+		   'id_topic' => $id_topic,
 		   'score' => $params['score'],
 		   'date' => date("Y-m-d h:i:s"),
 		   'comment'=>$params['comment']
@@ -278,9 +291,10 @@ class Main_model extends CI_Model {
 			$insert_id = $this->db->insert_id();
 			$data_user_has_rating = array(
 			   'id_rating' => $insert_id,
-			   'id_user' => $params['id_user']
+			   'id_user' => $id_user_presenting
 			);
 			$this->db->insert('user_has_rating', $data_user_has_rating);
+			$this->db->insert('user_voted',array("id_user_voting"=>$id_user_voting, "id_user_presenting"=>$id_user_presenting,"id_topic"=>$id_topic , "date"=>date("Y-m-d")));
 			if($this->db->affected_rows() == 1){
 				$result = array("response"=>1);
 			}else{ // Failed to add rating to user
