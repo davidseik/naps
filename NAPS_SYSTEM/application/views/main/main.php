@@ -48,7 +48,7 @@
       <?php
 
         foreach ($data["presentation_data"] as $p_data) {
-      
+        //var_dump($p_data);
       ?>
         <div class="row">
           <div class="col-md-3 user_img_cont">
@@ -59,7 +59,7 @@
           if(!$data["menu_data"]["auth"] ){
         ?>
               <div class="col-md-6">  
-                <h2><a href="#"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
+                <h2><a href="<?= base_url().'index.php/user_profile/'.$p_data['mail']?>"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
                 <h2><?= $p_data['title'] ?></h2>
                 <h2><?= $p_data['date'] ?></h2>
                 <!-- <button type="button" class="btn btn-md btn-success"><i class="fa fa-gavel fa-fw"></i>Evaluated</button>  -->
@@ -70,7 +70,7 @@
             <div class="cont">
             <div class="card" id="flips<?= $p_data['id_user'] ?>">
               <div class="col-md-6 user_data_cont front" id="user_present<?= $p_data['id_user'] ?>">  
-                <h2><a href="#"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
+                <h2><a href="<?= base_url().'index.php/user_profile/'.$p_data['mail']?>"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
                 <h2><?= $p_data['title'] ?></h2>
                 <h2><?= $p_data['date'] ?></h2>
                 <button type="button" class="btn btn-md btn-primary eval_btn" id="eval<?= $p_data['id_user']?>"><i class="fa fa-gavel fa-fw"></i>Evaluate!</button> 
@@ -94,7 +94,7 @@
 
         <?php }else{ ?>
               <div class="col-md-6">  
-                <h2><a href="#"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
+                <h2><a href="<?= base_url().'index.php/user_profile/'.$p_data['mail']?>"><?= $p_data['name'].' '.$p_data['last_name']?></a></h2>
                 <h2><?= $p_data['title'] ?></h2>
                 <h2><?= $p_data['date'] ?></h2>
                 <button type="button" class="btn btn-md btn-success"><i class="fa fa-check fa-fw"></i>Evaluated</button> 

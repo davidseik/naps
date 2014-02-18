@@ -111,9 +111,8 @@ $(document).ready(function(){
 			},
 			type : 'post',
 			success : function(output) {
-
 					if(output.response){
-						alert("Rating Added Correctly");
+						//alert("Rating Added Correctly");
 						location.reload();
 					}else{
 						alert("something wrong happened with your evaluation");

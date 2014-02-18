@@ -13,7 +13,7 @@ class Main extends CI_Controller {
 		$this->template->add_js("js/main/main.js");
 		$this->template->add_js("js/raty/jquery.raty.js");
 		$this->template->add_css("css/main/main.css");
-		
+	
 		//$this->main_model->clean_everything();
 
 		$session_data = $this->session->all_userdata(); // We get the session Data

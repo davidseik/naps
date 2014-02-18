@@ -242,9 +242,10 @@ class Main_model extends CI_Model {
 	function clean_everything(){
 		$this->db->update('user_has_topic', array('presented'=>0));
 		$this->db->update('user', array('presented'=>0));
-		$this->db->empty_table('presentation_history'); 
+		//$this->db->empty_table('presentation_history'); 
 		$this->db->empty_table('user_has_rating');
 		$this->db->empty_table('rating');
+		$this->db->empty_table('user_voted');
 	}
 
 	/*
@@ -252,7 +253,7 @@ class Main_model extends CI_Model {
 		Usage: Getting all the active presentations from the presentation history to be evaluated.
 	*/	
 	function get_active_presentation($id_user_voting = 0){
-		$this->db->select('user.id_user, user.name, user.last_name, user.picture, topic.id_topic, topic.title, presentation_history.date');
+		$this->db->select('user.id_user, user.name, user.last_name, user.picture, user.mail, topic.id_topic, topic.title, presentation_history.date');
 		$this->db->from('presentation_history');
 		$this->db->join('user', 'presentation_history.id_user = user.id_user');
 		$this->db->join('topic', 'topic.id_topic = presentation_history.id_topic');
