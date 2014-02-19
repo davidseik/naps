@@ -30,12 +30,17 @@
 	}
 	?>
 
-
 <div class="maincontainer col-md-10" >
       <div class="row">
        <div class="col-md-12">
-          <h1> Presentation Rating System</h1>
+          <img src="<?= base_url().'img/storm/storm-fly.gif'?>" id="storm-fly" style="margin-left:80%; display:none;" />
+          <img src="<?= base_url().'img/storm/storm-stand.gif' ?>" id="storm-stand" style="width:180px; display:none;" />
+          <h1 id="title_system"> Presentation Rating System</h1>
           <h2> Today Presenting</h2>
+          <audio style="display:none" id="storm_audio">
+            <source src="<?= base_url().'img/storm/storm.mp3' ?>" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
        </div> 
       </div>
       <?php

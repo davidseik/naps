@@ -1,0 +1,11 @@
+.btn_tb{
+	margin-right: 3%;
+	width:90px;
+}
+
+@media screen and (max-width: 1255px){
+	.btn_tb {
+	margin-top:5%;
+}
+
+}

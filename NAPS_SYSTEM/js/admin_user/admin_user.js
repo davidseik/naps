@@ -42,7 +42,7 @@ $(document).ready(function(){
 
 		if(pwd_in.val() == pwd_in_rpt.val()){
 			if(isEditing){
-				serialized = serialized + "&id_admin_user="+selected_id; // WTF
+				serialized = serialized + "&id_user="+selected_id; // WTF
 				if(pwd_in.val()==""){
 					serialized = serialized.replace("&password=","");
 					update_user(serialized);
@@ -99,7 +99,7 @@ $(document).ready(function(){
 			type : 'post',
 			success : function(output) {
 					if(output.response){
-						alert("User added!");
+						//alert("User added!");
 						location.reload();
 					}else{
 						alert("User already exists");

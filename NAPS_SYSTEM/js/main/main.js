@@ -6,8 +6,29 @@ $(document).ready(function(){
 			$("#mail_input").val(localStorage.mail_input);
 			$("#remember_me").attr("checked","checked");
 		}
-		$('.rate').raty({path: '/NAPS/NAPS_SYSTEM/js/raty/img', size   : 35, width:false});
+		$('.rate').raty({path: '/NAPS/NAPS_SYSTEM/js/raty/img', size   : 35, width:false, score:1});
 	}
+
+	$("#login_form").submit(function(e){
+		if($("#mail_input").val()=="stormeagle@megaman.com"){
+			e.preventDefault();
+			var audio = document.getElementById("storm_audio");
+			audio.play();
+			$( "#storm-fly" ).animate({
+			    marginLeft: "-=80%",//,
+			     height: "toggle"
+			  }, 9000, function() {
+			  	$(this).toggle();
+			  	$("#storm-stand").toggle();
+			  	$("#title_system").html("Storm Eagle System")
+			  });
+		}
+	});
+
+	$("#storm_audio").bind('ended', function(){
+	    $("#storm-stand").toggle();
+	    $("#title_system").html("Presentation Rating System");
+	});
 
 	$("#sort_button").on("click",function(){
 		var user_select = $("#user_select").val();
@@ -37,7 +58,7 @@ $(document).ready(function(){
 								type : 'post',
 								success : function(output) {
 										if(output.response){
-											alert("Presentation Added Correctly!");
+											//alert("Presentation Added Correctly!");
 											location.reload();
 										}else{
 											alert("Something Bad Happened");

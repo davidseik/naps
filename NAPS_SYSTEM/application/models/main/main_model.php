@@ -280,6 +280,12 @@ class Main_model extends CI_Model {
 		$id_user_voting = $params['id_user_voting'];
 		$id_user_presenting = $params['id_user'];
 		$id_topic = $params['id_topic'];
+		$score = $params['score'];
+		if($score == 0){
+			$result = array("response"=>0);
+			return $result;
+		}
+
 		$data_rating = array(
 		   'id_topic' => $id_topic,
 		   'score' => $params['score'],

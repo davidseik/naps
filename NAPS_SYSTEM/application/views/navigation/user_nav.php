@@ -40,11 +40,12 @@
         </div>
       <div class="navbar-collapse collapse">
        <form class="navbar-form navbar-right" role="form" id="login_form" action="<?php echo base_url(); ?>index.php/main/main/sign_in" method="post">
+           <!-- <form class="navbar-form navbar-right" role="form" id="login_form" method="post">  -->
             <div class="form-group">
               <input type="text" placeholder="Email" id="mail_input" class="form-control" name="mail" size="25" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="mail@domain.com" required>
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control" name="pass" required>
+              <input type="password" placeholder="Password" class="form-control" name="pass">
             </div>
             <button  type="submit" class="btn btn-success" id="login_form_button">Sign in</button>
             <div style="color:white; margin-top:2px;">

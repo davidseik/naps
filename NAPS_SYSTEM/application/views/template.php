@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
 
-    <title>NAPS</title>
+    <title>NAPS System</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url(); ?>css/bootstrap/css/bootstrap.css" rel="stylesheet">

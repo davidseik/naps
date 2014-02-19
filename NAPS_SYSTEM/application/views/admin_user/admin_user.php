@@ -14,7 +14,7 @@
                                             <th>Category</th>
                                             <th>Mail</th>
                                             <th>Last Login</th>
-                                            <th>Active</th>
+                                            <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -23,14 +23,14 @@
                                             foreach($user_data as $row){
                                         ?>
                                             <tr class="even">
-                                                <td><?= $row['id_admin_user']?></td>
+                                                <td><?= $row['id_user']?></td>
                                                 <td><?= $row['name']?></td>
                                                 <td><?= $row['last_name']?></td>
                                                 <td><?= $row['category']?></td>
                                                 <td><?= $row['mail']?></td>
                                                 <td><?= $row['last_log']?></td>
-                                                <td><?= $row['active']?></td>
-                                                <td><button type="button" class="btn btn-sm btn-primary btn_tb clickable e_btn" id="edit_btn<?= $row['id_admin_user']?>"><i class="fa fa-edit fa-fw"></i>Edit</button><button type="button" class="btn btn-sm btn-primary btn_tb d_btn clickable" id="delete_btn<?= $row['id_admin_user']?>"><i class="fa fa-times-circle fa-fw"></i>Delete</button></td>
+                                                <td><?= $row['active']?'Active':'Inactive'?></td>
+                                                <td><button type="button" class="btn btn-sm btn-primary btn_tb clickable e_btn" id="edit_btn<?= $row['id_user']?>"><i class="fa fa-edit fa-fw"></i>Edit</button><button type="button" class="btn btn-sm btn-primary btn_tb d_btn clickable" id="delete_btn<?= $row['id_user']?>"><i class="fa fa-times-circle fa-fw"></i>Delete</button></td>
                                             </tr>
 
                                         <?php
@@ -99,7 +99,7 @@
                                     <div class="col-sm-9">
                                       <select class="form-control" id="category_in" name="category">
                                           <option value="1">Administrator</option>
-                                          <option value="2">Moderator</option>
+                                          <!-- <option value="2">Presenter</option> -->
                                         </select>
                                     </div>
                                   </div>

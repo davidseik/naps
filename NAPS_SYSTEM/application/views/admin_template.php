@@ -89,7 +89,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-table fa-fw"></i> Topics</a>
+                        <a href="topic"><i class="fa fa-table fa-fw"></i> Topics</a>
                     </li>
                 </ul>
                 <!-- /#side-menu -->

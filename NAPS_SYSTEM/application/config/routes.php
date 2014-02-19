@@ -41,6 +41,7 @@
 $route['default_controller'] = "main/main";
 $route['dashboard'] = "dashboard/dashboard";
 $route['admin_user'] = "admin_user/admin_user";
+$route['topic'] = "topic/topic";
 $route['session/destroy'] = "session/session/destroy_session";
 $route['user_profile/(:any)'] = "user_profile/user_profile/index/$1";
 $route['user_profile'] = "main/main";
