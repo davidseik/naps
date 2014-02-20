@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	
+	var animation_active = false;
 	function init(){
 		if(localStorage.check_active == 1){
 			$("#mail_input").val(localStorage.mail_input);
@@ -11,24 +11,41 @@ $(document).ready(function(){
 
 	$("#login_form").submit(function(e){
 		if($("#mail_input").val()=="stormeagle@megaman.com"){
+			
 			e.preventDefault();
-			var audio = document.getElementById("storm_audio");
-			audio.play();
-			$( "#storm-fly" ).animate({
-			    marginLeft: "-=80%",//,
-			     height: "toggle"
-			  }, 9000, function() {
-			  	$(this).toggle();
-			  	$("#storm-stand").toggle();
-			  	$("#title_system").html("Storm Eagle System")
-			  });
+			if(!animation_active){
+				animation_active = true;
+				var audio = document.getElementById("storm_audio");
+				audio.play();
+				$( "#storm-fly" ).animate({
+				    left: "-=40%",//,
+				     height: "toggle"
+				  }, 5500, function() {
+				  	$(this).toggle();
+				  	$("#storm-stand").toggle();
+				  	window.setTimeout(function(){ 
+					  	$("#megaman-run").fadeIn("slow").animate({
+					  	 	left:"+=98%"
+					  	},6500,function(){ 
+					  		$(this).toggle();
+					  		$("#megaman-fire").toggle();
+					  		$("#title_system").html("Storm Eagle System!");
+					  	});
+				  	},2000);
+				  });
+			 }
 		}
 	});
 
 	$("#storm_audio").bind('ended', function(){
-	    $("#storm-stand").toggle();
-	    $("#title_system").html("Presentation Rating System");
+	   $("#storm-stand").toggle();
+	   $("#megaman-fire").toggle();
+	   $("#storm-fly").css("left","100%");
+	   $("#megaman-run").css("left","calc(-60% - 50px)");
+	   $("#title_system").html("Presentation Rating System");
+	   animation_active = false;
 	});
+
 
 	$("#sort_button").on("click",function(){
 		var user_select = $("#user_select").val();

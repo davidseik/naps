@@ -48,4 +48,12 @@ class Topic extends CI_Controller {
 	public function get_topic(){
 		echo json_encode($this->topic_model->get_topic($_POST['id_topic']));
 	}
+
+	public function update_topic(){
+		$params = array();
+		parse_str($_POST['data'],$params);
+		$result = $this->topic_model->update_topic($params);
+		echo json_encode($result);
+		//var_dump($params);
+	}
 }

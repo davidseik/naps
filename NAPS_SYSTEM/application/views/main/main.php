@@ -33,8 +33,13 @@
 <div class="maincontainer col-md-10" >
       <div class="row">
        <div class="col-md-12">
-          <img src="<?= base_url().'img/storm/storm-fly.gif'?>" id="storm-fly" style="margin-left:80%; display:none;" />
-          <img src="<?= base_url().'img/storm/storm-stand.gif' ?>" id="storm-stand" style="width:180px; display:none;" />
+         <div class="row">
+          <img src="<?= base_url().'img/storm/megaman-run.gif'?>" id="megaman-run" style="width:50px; position:absolute; left:calc(-60% - 50px); top:4%; display:none;" />
+          <img src="<?= base_url().'img/storm/megaman-fire.gif'?>" id="megaman-fire" style="width:195px; position:absolute; left: calc(38% - 44px); top:-6%; display:none;" />
+          <img src="<?= base_url().'img/storm/storm-fly.gif'?>" id="storm-fly" style="position:absolute; left:100%; top:-10%; display:none;" />
+          <img src="<?= base_url().'img/storm/storm-stand.gif' ?>" id="storm-stand" style="position:absolute; width:180px; left:calc(60% - 60px); top:-10%; display:none;" />
+         </div>
+
           <h1 id="title_system"> Presentation Rating System</h1>
           <h2> Today Presenting</h2>
           <audio style="display:none" id="storm_audio">
