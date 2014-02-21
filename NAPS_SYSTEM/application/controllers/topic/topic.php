@@ -6,14 +6,14 @@ class Topic extends CI_Controller {
 		parent::__construct();
 		$this->load->model('topic/topic_model');
 		//$this->load->helper('security');
-		//$this->check_ses = new Session();
+		$this->check_ses = new Session();
 	}
 	public function index()
 	{
 		$this->template->set_template('admin_template'); // Setting this template as default
-		//$this->check_ses->check_session(); // Check session to redirect or not.
-		//$session_data = $this->session->all_userdata();
-		//$data = $this->get_main_view_data($session_data); // Obtains the necessary data from the session to display
+		$this->check_ses->check_session(); // Check session to redirect or not.
+		$session_data = $this->session->all_userdata();
+		$data = $this->get_main_view_data($session_data); // Obtains the necessary data from the session to display
 
 		$topic_data  = $this->get_all_topics();
 		//var_dump($topic_data);
@@ -29,15 +29,32 @@ class Topic extends CI_Controller {
 		$this->template->add_js('js/topic/topic.js');
 
 		//Writting Directly in the username to display it on the admin.
-		//$this->template->write('user_name',$data['menu_data']['name'].' '.$data['menu_data']['last_name']);
+		$this->template->write('user_name',$data['menu_data']['name'].' '.$data['menu_data']['last_name']);
 		//Writting Directly in the mail to display it on the admin.
-		//$this->template->write('user_mail',$data['menu_data']['mail']);
+		$this->template->write('user_mail',$data['menu_data']['mail']);
 
 		$this->template->write_view('content', 'topic/topic', array("topic_data"=>$topic_data), FALSE);
 
 		//$this->template->write('module_name','Administration Users'); // Writting the name of the module
 
 		$this->template->render();
+	}
+
+		public function get_main_view_data($session_data){
+		$result;
+		if(isset($session_data['auth'])){
+			$menu_data = array(
+				"auth"=>1,
+				"name"=>$session_data["name"],
+				"last_name"=>$session_data["last_name"],
+				"mail"=>$session_data["mail"]
+			);
+		}else{
+			$menu_data = array("auth"=>0);
+
+		}
+		$result = array("menu_data"=>$menu_data);
+		return $result;
 	}
 
 
@@ -54,6 +71,17 @@ class Topic extends CI_Controller {
 		parse_str($_POST['data'],$params);
 		$result = $this->topic_model->update_topic($params);
 		echo json_encode($result);
-		//var_dump($params);
+	}
+
+	public function add_topic(){
+		$params = array();
+		parse_str($_POST['data'],$params);
+		unset($params['id_topic']);
+		$result = $this->topic_model->add_topic($params);
+		echo json_encode($result);
+	}
+
+	public function delete_topic(){
+		echo json_encode($this->topic_model->delete_topic($_POST['id_topic']));
 	}
 }

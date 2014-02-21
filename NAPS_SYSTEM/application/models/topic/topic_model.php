@@ -24,5 +24,20 @@ class Topic_model extends CI_Model {
 		return $result; 
 	}
 
+	function add_topic($params){
+		$data = array(
+		   'title' => $params['title'] ,
+		   'topic_category' => $params['category'] ,
+		   'active' => $params['active']
+		);
+		$this->db->insert('topic', $data); 
+		return array("response"=>1);
+	}
+
+	function delete_topic($id){
+		$this->db->delete('topic', array('id_topic' => $id));
+		return array("response"=>1); 
+	}
+
 }
 ?>

@@ -15,6 +15,9 @@
       <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="#">Hello <?= $name.' '.$last_name; ?></a> <input type="hidden" value='<?= $id_user ?>' id="logged_user" /><li>
+            <?php if($category != 1){?>
+            <li class="active"><a href="user_profile/<?=$mail?>">Profile</a><li>
+            <?php }?>
             <?php
               if($category == 1){ ?>
             <li><a href="<?= base_url();?>index.php/dashboard">Dashboard</a></li>

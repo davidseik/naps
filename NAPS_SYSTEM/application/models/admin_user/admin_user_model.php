@@ -6,6 +6,12 @@ class Admin_user_model extends CI_Model {
 		return $users;
 	}
 
+	function get_normal_user(){
+		$query = $this->db->query('SELECT id_user, name, last_name, category, mail, active, last_log FROM user WHERE category != 1');
+		$users = $query -> result_array();
+		return $users;
+	}
+
 	/*
 		Name: add_user
 		Usage:  

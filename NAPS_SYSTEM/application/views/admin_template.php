@@ -83,7 +83,7 @@
                                 <a href="admin_user">Administrator Users</a>
                             </li>
                             <li>
-                                <a href="#">Normal Users</a>
+                                <a href="normal_user">Normal Users</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
